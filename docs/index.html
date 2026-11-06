@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProcureFlow · Smart Enterprise Procurement</title>
+<meta name="description" content="Enterprise Source-to-Pay platform: requisitions, rule-based approvals, RFQs, purchase orders, goods receipt, three-way invoice matching and payments. React 19, Spring Boot 3.5, PostgreSQL.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  (function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<style>
+:root{--bg:#f7f7f8;--surface:#fff;--surface-2:#fafafa;--border:#e6e6e9;--text:#18181b;--muted:#52525b;--subtle:#8b8b94;--brand:#b4121b;--brand-soft:#fdf0f1;--brand-text:#b4121b;--shadow:0 1px 2px rgba(16,16,20,.05),0 8px 24px -12px rgba(16,16,20,.12)}
+:root[data-theme="dark"]{--bg:#0e0e10;--surface:#161618;--surface-2:#1b1b1e;--border:#2a2a2e;--text:#ededef;--muted:#a1a1aa;--subtle:#71717a;--brand:#e5484d;--brand-soft:rgba(229,72,77,.12);--brand-text:#ff8589;--shadow:0 8px 24px -12px rgba(0,0,0,.6)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font:15px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--brand-text);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+header.top{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+header.top .wrap{display:flex;align-items:center;gap:16px;height:56px}
+.brand{font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;gap:8px;color:var(--text)}
+.dot{width:10px;height:10px;border-radius:3px;background:var(--brand)}
+nav{margin-left:auto;display:flex;gap:18px;font-size:14px}nav a{color:var(--muted)}nav a:hover{color:var(--text);text-decoration:none}
+.toggle{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:8px;height:32px;padding:0 10px;cursor:pointer;font:inherit;font-size:13px}
+.hero{padding:72px 0 40px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-text)}
+h1{font-size:clamp(32px,5vw,52px);line-height:1.08;letter-spacing:-.03em;font-weight:700;margin:12px 0 16px;max-width:820px}
+.lead{font-size:18px;color:var(--muted);max-width:720px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.chip{font-size:12.5px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:var(--surface);color:var(--muted)}
+.shot{margin-top:40px;border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);background:var(--surface)}
+.shot img{display:block;width:100%;height:auto}
+section{padding:56px 0;border-top:1px solid var(--border)}
+h2{font-size:26px;letter-spacing:-.02em;margin-bottom:8px}
+.sub{color:var(--muted);margin-bottom:28px;max-width:680px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.step{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px}
+.step b{display:block;font-size:12px;color:var(--brand-text);font-weight:600;margin-bottom:4px}
+.step span{font-weight:600}.step p{font-size:13.5px;color:var(--muted);margin-top:4px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.card img{display:block;width:100%;height:auto;border-bottom:1px solid var(--border)}
+.card figcaption{padding:12px 16px;font-size:13.5px;color:var(--muted)}
+.phones{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+.phones img{width:240px;border-radius:24px;border:1px solid var(--border);box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;font-size:14px;background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+th,td{text-align:left;padding:11px 16px;border-bottom:1px solid var(--border)}th{font-size:12.5px;color:var(--muted);font-weight:600;background:var(--surface-2)}
+tr:last-child td{border-bottom:0}
+ul.list{padding-left:18px;color:var(--muted)}ul.list li{margin:6px 0}ul.list b{color:var(--text);font-weight:600}
+footer{padding:40px 0;border-top:1px solid var(--border);color:var(--subtle);font-size:13.5px}
+@media(max-width:820px){.flow{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}nav{display:none}.toggle{margin-left:auto}}
+@media(max-width:480px){.flow{grid-template-columns:1fr}.hero{padding-top:48px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <span class="brand"><span class="dot"></span>ProcureFlow</span>
+  <nav><a href="#workflow">Workflow</a><a href="#screens">Screens</a><a href="#stack">Stack</a><a href="https://github.com/KArT4206/Smart-Enterprise-Procurement-System">GitHub</a></nav>
+  <button class="toggle" id="t" type="button">Theme</button>
+</div></header>
+
+<main>
+<div class="wrap hero">
+  <div class="eyebrow">Source-to-Pay platform</div>
+  <h1>Every purchase, from request to payment, in one place.</h1>
+  <p class="lead">ProcureFlow handles the whole procurement lifecycle: requisitions, rule-based approvals, RFQs, purchase orders, goods receipt, three-way invoice matching and payment. Each of the nine roles works from its own queue, with an audit trail at every step.</p>
+  <div class="chips"><span class="chip">React 19</span><span class="chip">Spring Boot 3.5</span><span class="chip">Java 21</span><span class="chip">PostgreSQL</span><span class="chip">JWT + RBAC</span><span class="chip">Light &amp; dark</span></div>
+  <div class="shot"><img src="screenshots/dashboard_procurement.png" alt="Procurement manager dashboard with action queue"></div>
+</div>
+
+<section id="workflow"><div class="wrap">
+  <h2>Eight steps, nine roles</h2>
+  <p class="sub">Approval routing comes from database rules (department, category and amount), so the chain changes without code changes. Final approval generates the purchase order.</p>
+  <div class="flow">
+    <div class="step"><b>Step 1</b><span>Requisition</span><p>Requester adds line items and sees the approval path before submitting.</p></div>
+    <div class="step"><b>Step 2</b><span>Department approval</span><p>Approve, reject or return with remarks, all recorded in history.</p></div>
+    <div class="step"><b>Step 3</b><span>Sourcing &amp; PO</span><p>RFQ bidding rounds, quotation comparison and PO award.</p></div>
+    <div class="step"><b>Step 4</b><span>Vendor delivery</span><p>Vendors confirm and dispatch from their own portal.</p></div>
+    <div class="step"><b>Step 5</b><span>Goods receipt</span><p>Warehouse logs GRNs and verifies full or partial deliveries.</p></div>
+    <div class="step"><b>Step 6</b><span>Invoice matching</span><p>Three-way match of PO, GRN and invoice, with variances flagged.</p></div>
+    <div class="step"><b>Step 7</b><span>Payment</span><p>Finance authorises release and tracks budget against spend.</p></div>
+    <div class="step"><b>Step 8</b><span>Closed</span><p>The PO closes and the full trail stays in the audit log.</p></div>
+  </div>
+</div></section>
+
+<section id="screens"><div class="wrap">
+  <h2>Screens</h2>
+  <p class="sub">A token-based design system with light and dark themes, a collapsible sidebar, a shared data table and layouts that work down to phone width.</p>
+  <div class="grid2">
+    <figure class="card"><img src="screenshots/login.png" alt="Sign in" loading="lazy"><figcaption>Sign in</figcaption></figure>
+    <figure class="card"><img src="screenshots/requisition_form.png" alt="New requisition" loading="lazy"><figcaption>New requisition with approval routing preview</figcaption></figure>
+    <figure class="card"><img src="screenshots/rfqs.png" alt="RFQs" loading="lazy"><figcaption>RFQ bidding rounds in the shared table</figcaption></figure>
+    <figure class="card"><img src="screenshots/dashboard_dark.png" alt="Dark dashboard" loading="lazy"><figcaption>Admin dashboard, dark theme</figcaption></figure>
+    <figure class="card"><img src="screenshots/vendor_quotations.png" alt="Vendor quotations" loading="lazy"><figcaption>Vendor portal: quotations</figcaption></figure>
+    <figure class="card"><img src="screenshots/role_switcher.png" alt="Role switcher" loading="lazy"><figcaption>Admin role-perspective switcher</figcaption></figure>
+    <figure class="card"><img src="screenshots/tickets.png" alt="Support tickets" loading="lazy"><figcaption>Support desk tickets</figcaption></figure>
+    <figure class="card"><img src="screenshots/signup.png" alt="Sign up" loading="lazy"><figcaption>Account request, approved by an admin</figcaption></figure>
+  </div>
+  <div class="phones">
+    <img src="screenshots/mobile_dashboard.png" alt="Mobile dashboard" loading="lazy">
+    <img src="screenshots/mobile_nav.png" alt="Mobile navigation drawer" loading="lazy">
+  </div>
+</div></section>
+
+<section id="stack"><div class="wrap">
+  <h2>Tech stack</h2>
+  <p class="sub">A REST API secured with JWT, consumed by a single-page React app.</p>
+  <table>
+    <tr><th>Layer</th><th>Technology</th></tr>
+    <tr><td>Frontend</td><td>React 19, Vite, React Router 7, Axios, lucide-react, CSS design tokens</td></tr>
+    <tr><td>Backend</td><td>Java 21, Spring Boot 3.5: Web, Data JPA, Security, Validation</td></tr>
+    <tr><td>Auth</td><td>JWT (jjwt), BCrypt, role-based access control</td></tr>
+    <tr><td>Database</td><td>PostgreSQL with SQL schema and seed scripts</td></tr>
+    <tr><td>API docs</td><td>springdoc OpenAPI / Swagger UI</td></tr>
+  </table>
+  <h2 style="margin-top:48px">Limitations</h2>
+  <ul class="list">
+    <li><b>Sample data.</b> The RFQ, quotation, vendor, warehouse, invoice-matching and ticket screens partly use built-in sample data while their endpoints are completed.</li>
+    <li><b>Polling.</b> Notifications refresh every 30 seconds; there is no push channel.</li>
+    <li><b>Tests.</b> There is no automated end-to-end test suite yet.</li>
+  </ul>
+</div></section>
+</main>
+
+<footer><div class="wrap">Infosys Springboard internship group project · UI rework by Karthik B · MIT License · Source code in a private repository.</div></footer>
+
+<script>
+document.getElementById('t').onclick=function(){var r=document.documentElement,n=r.getAttribute('data-theme')==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n)}catch(e){}};
+</script>
+</body>
+</html>
