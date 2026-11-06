@@ -6,8 +6,6 @@
 
 An enterprise Source-to-Pay (S2P) platform that takes a purchase from the first internal request to final payment: requisition, rule-based approval, RFQ and quotations, purchase order, vendor delivery, goods receipt, three-way invoice matching, payment and closure. Each of the nine roles works from its own queue, and every step is recorded in an audit trail.
 
-Built as an Infosys Springboard internship group project.
-
 ![Dashboard](docs/screenshots/dashboard_admin.png)
 
 ## What it does
@@ -116,4 +114,9 @@ Secrets are read from environment variables only. See [docs/SECURITY.md](docs/SE
 
 ## Credits
 
-Infosys Springboard internship group project. UI rework by Karthik B. Released under the MIT License.
+| Contributor | GitHub |
+|---|---|
+| Dhivagar | [@Dhivagar003](https://github.com/Dhivagar003) |
+| Karthik B | [@KArT4206](https://github.com/KArT4206) |
+
+Released under the MIT License.
