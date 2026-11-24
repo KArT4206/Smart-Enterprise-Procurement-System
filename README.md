@@ -120,9 +120,9 @@ Secrets are read from environment variables only. See [docs/SECURITY.md](docs/SE
 
 ## Credits
 
-| Contributor | GitHub |
-|---|---|
-| Dhivagar | [@Dhivagar003](https://github.com/Dhivagar003) |
-| Karthik B | [@KArT4206](https://github.com/KArT4206) |
+| Contributor | GitHub | Responsibility |
+|---|---|---|
+| Dhivagar | [@Dhivagar003](https://github.com/Dhivagar003) | Backend integration, PostgreSQL, procurement workflow, authentication, system integration |
+| Karthik B | [@KArT4206](https://github.com/KArT4206) | Frontend, UI/UX, module development, testing |
 
 Released under the MIT License.
