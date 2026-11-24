@@ -1,5 +1,11 @@
 # ProcureFlow: Smart Enterprise Procurement System
 
+[![Project site](https://img.shields.io/badge/site-live-b4121b)](https://kart4206.github.io/Smart-Enterprise-Procurement-System/)
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5-6DB33F?logo=springboot&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791?logo=postgresql&logoColor=white)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+
 > This repository documents the project (description, architecture, workflow, screenshots). The source code lives in a private repository, `Smart-Enterprise-Procurement-System-code`.
 
 **Project site:** [https://kart4206.github.io/Smart-Enterprise-Procurement-System/](https://kart4206.github.io/Smart-Enterprise-Procurement-System/)
